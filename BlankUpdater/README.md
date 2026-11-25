@@ -56,24 +56,6 @@ Versions are compared like `0.3.0 < 0.3.1 < 0.4.0`. A pre-release such as `0.3.0
 
 If the installed version is the same as on the server but the file is different, nothing is replaced and the log shows a warning. Raise the version number in `MelonInfo` before every upload. A local build that is newer than the server is kept
 
-## Publishing a release (server side)
-
-The server reads everything from these folders, there is nothing else to maintain:
-
-```
-downloads/ChilloutVR/Mods/Stable/
-downloads/ChilloutVR/Mods/Beta/
-downloads/ChilloutVR/Plugins/Stable/
-downloads/ChilloutVR/Plugins/Beta/
-```
-
-1. Raise the version in the mod's `MelonInfo`
-2. Build it
-3. Copy the DLL into `Beta` (overwrite the old one, no renaming)
-4. When the beta is fine, copy the same DLL into `Stable`
-
-`downloads/.updater/manifest.php` picks up changes on its own and reads the version from the DLL
-
 ## Building
 
 Run `build.bat` or `dotnet build -c Release`. The DLL goes straight into `ChilloutVR\Plugins`. If ChilloutVR is not installed at `D:\SteamLibrary\steamapps\common\ChilloutVR`, set the `CVRPATH` environment variable or change the path in `BlankUpdater.csproj` and `build.bat`
